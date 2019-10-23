@@ -6,6 +6,7 @@ const postcss = require('rollup-plugin-postcss');
 const clear = require('rollup-plugin-clear');
 const typescript = require('rollup-plugin-typescript2');
 const nodeGlobals = require('rollup-plugin-node-globals');
+const img = require('rollup-plugin-img');
 
 const resolve = function (filePath) {
   return path.join(__dirname, '..', filePath)
@@ -25,6 +26,10 @@ module.exports = [{
     nodeGlobals(),
     clear({
       targets: ['dist'],
+    }),
+    img({
+      output: 'dist/images',
+      limit: 8192,  // default 8192(8k)
     }),
     postcss({
       extract: true, // 可配置生成绝对路径
