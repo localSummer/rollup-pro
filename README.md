@@ -1,0 +1,1 @@
+rollup 主要针对 JavaScript 库进行打包，对 `css` 、`image` 等其他资源支持不够友好
