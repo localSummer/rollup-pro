@@ -73,7 +73,7 @@ module.exports = {
 }
 ```
 
-polyfill 另一中解决方案
+polyfill 另一种解决方案
 [https://polyfill.alicdn.com/polyfill.min.js?features=default,es2017,es6,fetch,RegeneratorRuntime](https://polyfill.alicdn.com/polyfill.min.js?features=default,es2017,es6,fetch,RegeneratorRuntime)
 
 根据浏览器兼容性自动引入 polyfills
