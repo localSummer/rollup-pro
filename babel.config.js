@@ -2,7 +2,12 @@ module.exports = {
   presets: [[
     "@babel/preset-env",
     {
-      useBuiltIns: "usage"
+      "modules": false,
+      "useBuiltIns": "usage",
+      "corejs": "3.3.3",
+      "targets": {
+        "ie": 10
+      }
     }
   ], "@babel/preset-react"],
   plugins: [
@@ -21,14 +26,6 @@ module.exports = {
       { "useBuiltIns": true }
     ],
     "@babel/plugin-transform-react-jsx",
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "helpers": true,
-        // "polyfill": false,
-        "regenerator": true,
-        "absoluteRuntime": "@babel/runtime"
-      }
-    ]
+    "@babel/plugin-transform-runtime" // 解决多个地方使用相同代码导致打包重复的问题
   ]
 }

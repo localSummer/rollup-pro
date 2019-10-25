@@ -41,7 +41,7 @@ module.exports = [{
     }),
     babel({
       runtimeHelpers: true,
-      exclude: [/\/node_modules\//]
+      exclude: 'node_modules/**',
     })
   ],
 }]

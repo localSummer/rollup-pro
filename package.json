@@ -52,6 +52,7 @@
     "@babel/runtime": "^7.6.3",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
+    "core-js": "^3.3.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
   },

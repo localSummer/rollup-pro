@@ -10,10 +10,6 @@ const arr1: number[] = [1,2,3];
 const arr2: number[] = [4,5,6];
 console.log([...arr1, ...arr2]);
 
-if ([1, 2, 3].includes(2)) {
-  console.log('include 2');
-}
-
 async function initDemo () {
   let data = await demo();
   return data;
