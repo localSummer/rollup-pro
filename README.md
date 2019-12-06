@@ -8,7 +8,8 @@ rollup 主要针对 JavaScript 库进行打包，对 `css` 、`image` 等其他�
 - `rollup-plugin-postcss` css打包
 - `rollup-plugin-serve` 启动本地服务
 - `rollup-plugin-livereload` 监听文件改变，并刷新浏览器
-- `rollup-plugin-uglify` 代码压缩
+- `rollup-plugin-terser` 代码压缩
+- `rollup-plugin-progress` 打包进度条
 
 tsconfig.json
 ```json
