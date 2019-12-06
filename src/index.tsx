@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from "classnames";
+import loadingbar from './images/loadingbar.png';
 import './index.less';
 
 /*
@@ -39,7 +40,7 @@ let defaultProps = {
   option: {
     speed: 200,
     progressStatus: '',
-    template: <img alt="进度条" className="progress-bar" src={require('./images/loadingbar.png')} />
+    template: <img alt="进度条" className="progress-bar" src={loadingbar} />
   }
 }
 
