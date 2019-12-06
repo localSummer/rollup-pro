@@ -15,14 +15,19 @@ const resolve = function (filePath) {
 const isProductionEnv = process.env.NODE_ENV === 'production';
 
 module.exports = [{
-  input: resolve('src/index.ts'),
+  input: resolve('src/index.tsx'),
   output: {
     file: resolve('dist/index.js'),
     format: 'cjs'
   },
   plugins: [
     nodeResolve(),
-    commonjs(),
+    commonjs({
+      namedExports: {
+        'node_modules/react/index.js': ['createElement', 'useState', 'useEffect'],
+        'node_modules/react-dom/index.js': ['render']
+      }
+    }),
     nodeGlobals(),
     clear({
       targets: ['dist'],

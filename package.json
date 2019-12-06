@@ -2,7 +2,7 @@
   "name": "rollup-pro",
   "version": "1.0.0",
   "description": "",
-  "main": "rollup.config.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "npx rollup -w -c ./config/rollup.config.dev.js",
     "build": "npx rollup -c ./config/rollup.config.prod.js",
@@ -39,6 +39,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-typescript2": "^0.24.3",
     "rollup-plugin-uglify": "^6.0.3",
     "ts-jest": "^24.1.0",
@@ -50,8 +51,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",
+    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
+    "classnames": "^2.2.6",
     "core-js": "^3.3.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
