@@ -1,4 +1,5 @@
 const path = require('path');
+const autoprefixer = require('autoprefixer');
 const babel = require('rollup-plugin-babel');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
@@ -6,7 +7,10 @@ const postcss = require('rollup-plugin-postcss');
 const clear = require('rollup-plugin-clear');
 const typescript = require('rollup-plugin-typescript2');
 const nodeGlobals = require('rollup-plugin-node-globals');
+const progress = require('rollup-plugin-progress');
 const img = require('rollup-plugin-img');
+const react = require('react');
+const reactDom = require('react-dom');
 
 const resolve = function (filePath) {
   return path.join(__dirname, '..', filePath)
@@ -20,12 +24,13 @@ module.exports = [{
     file: resolve('dist/index.js'),
     format: 'cjs'
   },
+  // external: ['react', 'react-dom'],
   plugins: [
-    nodeResolve(),
+    nodeResolve({ extensions: ['.js', 'jsx', '.ts', '.tsx'] }),
     commonjs({
       namedExports: {
-        'node_modules/react/index.js': ['createElement', 'useState', 'useEffect'],
-        'node_modules/react-dom/index.js': ['render']
+        'react': Object.keys(react),
+        'react-dom': Object.keys(reactDom)
       }
     }),
     nodeGlobals(),
@@ -40,6 +45,7 @@ module.exports = [{
       extract: true, // 可配置生成绝对路径
       minimize: isProductionEnv,
       extensions: ['css', 'less'],
+      plugins: [autoprefixer]
     }),
     typescript({
       useTsconfigDeclarationDir: true
@@ -47,6 +53,8 @@ module.exports = [{
     babel({
       runtimeHelpers: true,
       exclude: 'node_modules/**',
-    })
+    }),
+    // Progress while building
+    progress({ clearLine: false }),
   ],
 }]
