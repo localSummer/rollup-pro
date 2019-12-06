@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "npx rollup -w -c ./config/rollup.config.dev.js",
     "build": "npx rollup -c ./config/rollup.config.prod.js",
