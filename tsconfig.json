@@ -18,7 +18,8 @@
     "outDir": "dist"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "images.d.ts"
   ],
   "exclude": ["node_modules", "dist", "config"]
 }

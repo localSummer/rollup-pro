@@ -8,8 +8,8 @@ const clear = require('rollup-plugin-clear');
 const typescript = require('rollup-plugin-typescript2');
 const nodeGlobals = require('rollup-plugin-node-globals');
 const progress = require('rollup-plugin-progress');
-const img = require('@rollup/plugin-image');
 const externalGlobals = require('rollup-plugin-external-globals');
+const url = require('@rollup/plugin-url');
 const react = require('react');
 const reactDom = require('react-dom');
 
@@ -22,13 +22,14 @@ const isProductionEnv = process.env.NODE_ENV === 'production';
 module.exports = [{
   input: resolve('src/index.tsx'),
   output: {
-    file: resolve('dist/index.js'),
-    format: 'umd',
+    dir: 'dist',
+    entryFileNames: '[name].js',
+    format: 'cjs',
     name: 'rollup-pro'
   },
   external: ['react', 'react-dom'],
   plugins: [
-    nodeResolve({ extensions: ['.js', 'jsx', '.ts', '.tsx'] }),
+    nodeResolve({ extensions: ['.js', '.jsx', '.ts', '.tsx', '.less'] }),
     commonjs({
       namedExports: {
         'react': Object.keys(react),
@@ -39,7 +40,13 @@ module.exports = [{
     clear({
       targets: ['dist'],
     }),
-    img(),
+    url({
+      include: ['src/**/*.svg', 'src/**/*.png', 'src/**/*.jpg', 'src/**/*.gif'],
+      destDir: 'dist/images',
+      publicPath: './', // 公共路径
+      fileName: '[name][extname]',
+      limit: 0
+    }),
     postcss({
       extract: false, // 可配置生成绝对路径
       minimize: isProductionEnv,
@@ -47,7 +54,8 @@ module.exports = [{
       plugins: [autoprefixer]
     }),
     typescript({
-      useTsconfigDeclarationDir: true
+      useTsconfigDeclarationDir: true,
+      objectHashIgnoreUnknownHack: true,
     }),
     babel({
       runtimeHelpers: true,
