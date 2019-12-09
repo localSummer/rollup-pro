@@ -22,9 +22,13 @@ module.exports = [{
   input: resolve('src/index.tsx'),
   output: {
     file: resolve('dist/index.js'),
-    format: 'cjs'
+    format: 'esm',
+    globals: {
+      'react' : 'React',
+      'react-dom': 'ReactDOM'
+    }
   },
-  // external: ['react', 'react-dom'],
+  external: ['react', 'react-dom'],
   plugins: [
     nodeResolve({ extensions: ['.js', 'jsx', '.ts', '.tsx'] }),
     commonjs({
