@@ -53,10 +53,11 @@ module.exports = [{
       runtimeHelpers: true,
       exclude: 'node_modules/**',
     }),
-    externalGlobals({
-      'react': "React",
-      "react-dom": 'ReactDOM'
-    }),
+    // 使用CDN react 加载则需要如下配置，如果是使用dll打包后的 react 则不用添加 externalGlobals
+    // externalGlobals({
+    //   'react': "React",
+    //   "react-dom": 'ReactDOM'
+    // }),
     // Progress while building
     progress({ clearLine: false }),
   ],
