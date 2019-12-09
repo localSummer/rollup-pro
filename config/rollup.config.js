@@ -9,6 +9,7 @@ const typescript = require('rollup-plugin-typescript2');
 const nodeGlobals = require('rollup-plugin-node-globals');
 const progress = require('rollup-plugin-progress');
 const img = require('@rollup/plugin-image');
+const externalGlobals = require('rollup-plugin-external-globals');
 const react = require('react');
 const reactDom = require('react-dom');
 
@@ -23,10 +24,6 @@ module.exports = [{
   output: {
     file: resolve('dist/index.js'),
     format: 'esm',
-    globals: {
-      'react' : 'React',
-      'react-dom': 'ReactDOM'
-    }
   },
   external: ['react', 'react-dom'],
   plugins: [
@@ -54,6 +51,10 @@ module.exports = [{
     babel({
       runtimeHelpers: true,
       exclude: 'node_modules/**',
+    }),
+    externalGlobals({
+      'react': "React",
+      "react-dom": 'ReactDOM'
     }),
     // Progress while building
     progress({ clearLine: false }),
