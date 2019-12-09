@@ -8,7 +8,7 @@ const clear = require('rollup-plugin-clear');
 const typescript = require('rollup-plugin-typescript2');
 const nodeGlobals = require('rollup-plugin-node-globals');
 const progress = require('rollup-plugin-progress');
-const img = require('rollup-plugin-img');
+const img = require('@rollup/plugin-image');
 const react = require('react');
 const reactDom = require('react-dom');
 
@@ -37,12 +37,9 @@ module.exports = [{
     clear({
       targets: ['dist'],
     }),
-    img({
-      output: 'dist/images',
-      limit: 8192,  // default 8192(8k)
-    }),
+    img(),
     postcss({
-      extract: true, // 可配置生成绝对路径
+      extract: false, // 可配置生成绝对路径
       minimize: isProductionEnv,
       extensions: ['css', 'less'],
       plugins: [autoprefixer]
