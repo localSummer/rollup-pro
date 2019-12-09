@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import ReactDOM from 'react-dom';
 import CountOperation from './components/CountOperation';
 import ShowCount from './components/ShowCount';
 import loadingbar from './images/loadingbar.png';
@@ -12,10 +13,11 @@ const Counter: React.FC = () => {
   return (
     <div>
       <ShowCount count={count}/>
-      <img src={loadingbar} alt=""/>
+      <img className="img" src={loadingbar} alt=""/>
       <CountOperation onAdd={handleAdd}/>
     </div>
   )
 }
 
 export default Counter;
+// ReactDOM.render(<Counter/>, document.getElementById('app'));

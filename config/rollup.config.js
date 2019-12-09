@@ -43,7 +43,7 @@ module.exports = [{
     url({
       include: ['src/**/*.svg', 'src/**/*.png', 'src/**/*.jpg', 'src/**/*.gif'],
       destDir: 'dist/images',
-      publicPath: './', // 公共路径
+      publicPath: '/dist/images/', // 公共路径
       fileName: '[name][extname]',
       limit: 0
     }),
