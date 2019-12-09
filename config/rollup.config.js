@@ -23,7 +23,8 @@ module.exports = [{
   input: resolve('src/index.tsx'),
   output: {
     file: resolve('dist/index.js'),
-    format: 'esm',
+    format: 'umd',
+    name: 'rollup-pro'
   },
   external: ['react', 'react-dom'],
   plugins: [
