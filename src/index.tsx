@@ -15,6 +15,7 @@ const Counter: React.FC = () => {
       <ShowCount count={count}/>
       <img className="img" src={loadingbar} alt=""/>
       <CountOperation onAdd={handleAdd}/>
+      <img className="img" src={loadingbar} alt=""/>
     </div>
   )
 }

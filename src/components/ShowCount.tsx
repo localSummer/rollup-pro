@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const ShowCount: React.FC<{count: number}> = ({count}) => {
   return (
-    <p>count: {count}</p>
+    <p>count: <span>{count}</span></p>
   );
 }
 
