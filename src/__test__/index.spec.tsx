@@ -5,7 +5,7 @@ import Counter from '../index';
 it('test count', () => {
   const wrapper = shallow(<Counter/>);
 
-  expect(wrapper.find('img')).toHaveLength(2);
+  expect(wrapper.find('img')).toHaveLength(1);
 
   expect(wrapper).toMatchSnapshot();
 })

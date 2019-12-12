@@ -12,9 +12,5 @@ exports[`test count 1`] = `
   <CountOperation
     onAdd={[Function]}
   />
-  <img
-    alt=""
-    className="img"
-  />
 </div>
 `;
