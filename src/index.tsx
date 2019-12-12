@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 // import ReactDOM from 'react-dom';
-import CountOperation from './components/CountOperation';
-import ShowCount from './components/ShowCount';
-import loadingbar from './images/loadingbar.png';
-import './index.less';
+import CountOperation from "./components/CountOperation";
+import ShowCount from "./components/ShowCount";
+import loadingbar from "./images/loadingbar.png";
+import "./index.less";
 
 const Counter: React.FC = () => {
   let [count, setCount] = React.useState(0);
@@ -12,12 +12,12 @@ const Counter: React.FC = () => {
   }, []);
   return (
     <div>
-      <ShowCount count={count}/>
-      <img className="img" src={loadingbar} alt=""/>
-      <CountOperation onAdd={handleAdd}/>
+      <ShowCount count={count} />
+      <img className="img" src={loadingbar} alt="" />
+      <CountOperation onAdd={handleAdd} />
     </div>
-  )
-}
+  );
+};
 
 export default Counter;
 // ReactDOM.render(<Counter/>, document.getElementById('app'));
