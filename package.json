@@ -8,7 +8,7 @@
     "dev": "npx rollup -w -c ./config/rollup.config.dev.js",
     "build": "npx rollup -c ./config/rollup.config.prod.js",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache"
   },
@@ -25,10 +25,15 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@rollup/plugin-url": "^4.0.0",
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.19",
     "@types/rollup-plugin-json": "^3.0.2",
     "@types/rollup-plugin-node-resolve": "^4.1.0",
     "autoprefixer": "^9.7.3",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "jest": "^24.9.0",
     "jest-config": "^24.9.0",
     "less": "^3.10.3",
@@ -61,19 +66,46 @@
     "@types/react-dom": "^16.9.2",
     "classnames": "^2.2.6",
     "core-js": "^3.3.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom-fourteen": "^1.0.1",
+    "jest-watch-typeahead": "^0.4.2",
     "react": "^16.11.0",
+    "react-app-polyfill": "^1.0.5",
     "react-dom": "^16.11.0"
   },
   "jest": {
     "transform": {
-      ".(ts|tsx)": "ts-jest"
+      "^.+\\.tsx?$": "ts-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
-    "testEnvironment": "node",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom",
+      "<rootDir>/setup-react-adapter.ts"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jest-environment-jsdom-fourteen",
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",
@@ -88,7 +120,8 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
     ]
   }
 }
