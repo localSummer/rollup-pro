@@ -1,5 +1,17 @@
 rollup 主要针对 JavaScript 库进行打包，对 `css` 、`image` 等其他资源支持不够友好
 
+package.json 中可执行脚本
+``` javascript
+"scripts": {
+  "dev": "npx rollup -w -c ./config/rollup.config.dev.js",
+  "build": "npx rollup -c ./config/rollup.config.prod.js",
+  "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+  "test": "jest --passWithNoTests -u", // -u 允许写入或更新测试快照文件
+  "test:watch": "jest --coverage --watch",
+  "test:prod": "npm run lint && npm run test -- --no-cache"
+}
+```
+
 #### 核心包
 
 - `rollup-plugin-commonjs` 转化cmd模块，使用 `namedExports` 导出找不到的 API 名字
@@ -208,7 +220,7 @@ module.exports = {
 };
 ```
 
-setup-react-adapter.ts 测试启动执行文件，配置使用enzyme 测试 React 的环境
+setup-react-adapter.ts 测试启动执行文件，配置使用enzyme 测试 React 的环境，这样在每个测试文件中无需再进行配置了
 ``` javascript
 import { configure } from "enzyme";
 import * as ReactSixteenAdapter from "enzyme-adapter-react-16";
