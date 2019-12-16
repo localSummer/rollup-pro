@@ -131,7 +131,7 @@ npm 包依赖
 `@types/enzyme` `@types/enzyme-adapter-react-16` `enzyme` `enzyme-adapter-react-16` `enzyme-to-json` `identity-obj-proxy`
 `react-app-polyfill`
 
-``` json
+``` javascript
 "jest": {
   "transform": {
     "^.+\\.tsx?$": "ts-jest",
@@ -146,7 +146,7 @@ npm 包依赖
     "<rootDir>/setup-react-adapter.ts"
   ],
   "snapshotSerializers": [
-    "enzyme-to-json/serializer"
+    "enzyme-to-json/serializer" // 快照生成
   ],
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
