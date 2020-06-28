@@ -1,4 +1,4 @@
-> [`koa-tools`](https://github.com/localSummer/rollup-pro/tree/koa-tools) 为 koa2 + typescript 的开发环境，最初预想使用 `rollup` 进行打包，无奈报错太多，转而使用 `tsc` 进行 ts 源代码的编译工作。
+> 分支 [`koa-tools`](https://github.com/localSummer/rollup-pro/tree/koa-tools) 为 koa2 + typescript 的开发环境，最初预想使用 `rollup` 进行打包，无奈报错太多，转而使用 `tsc` 进行 ts 源代码的编译工作。
 ```javascript
 "scripts": {
   "compile": "npx tsc --project tsconfig.json -w",
