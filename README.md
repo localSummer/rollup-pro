@@ -1,3 +1,14 @@
+> [`koa-tools`](https://github.com/localSummer/rollup-pro/tree/koa-tools) 为 koa2 + typescript 的开发环境，最初预想使用 `rollup` 进行打包，无奈报错太多，转而使用 `tsc` 进行 ts 源代码的编译工作。
+```javascript
+"scripts": {
+  "compile": "npx tsc --project tsconfig.json -w",
+  "dev": "npx nodemon bin/www",
+  "build": "npx tsc --project tsconfig.json",
+  "prd": "npx pm2 start bin/www",
+  "eslint": "npx eslint src --ext .ts"
+},
+```
+
 rollup 主要针对 JavaScript 库进行打包，对 `css` 、`image` 等其他资源支持不够友好
 
 package.json 中可执行脚本
