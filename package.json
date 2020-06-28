@@ -1,135 +1,45 @@
 {
-  "name": "rollup-pro",
+  "name": "rollup-koa2",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/app.js",
   "scripts": {
-    "dev": "npx rollup -w -c ./config/rollup.config.dev.js",
-    "build": "npx rollup -c ./config/rollup.config.prod.js",
-    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "test": "jest --passWithNoTests -u",
-    "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache"
+    "compile": "npx tsc --project tsconfig.json -w",
+    "dev": "npx nodemon bin/www",
+    "build": "npx tsc --project tsconfig.json",
+    "prd": "npx pm2 start bin/www",
+    "eslint": "npx eslint src --ext .ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
-    "@babel/plugin-transform-classes": "^7.5.5",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
-    "@rollup/plugin-url": "^4.0.0",
-    "@types/enzyme": "^3.10.4",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.19",
-    "@types/rollup-plugin-json": "^3.0.2",
-    "@types/rollup-plugin-node-resolve": "^4.1.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/koa-static": "^4.0.1",
+    "@types/koa2-cors": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
-    "autoprefixer": "^9.7.3",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.17.0",
-    "jest": "^24.9.0",
-    "jest-config": "^24.9.0",
-    "less": "^3.10.3",
+    "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
-    "rollup": "^1.25.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-clear": "^2.0.7",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-external-globals": "^0.5.0",
-    "rollup-plugin-livereload": "^1.0.4",
-    "rollup-plugin-node-globals": "^1.4.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-progress": "^1.1.1",
-    "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-terser": "^5.1.2",
-    "rollup-plugin-typescript2": "^0.24.3",
-    "rollup-plugin-uglify": "^6.0.3",
-    "ts-jest": "^24.1.0",
-    "tslib": "^1.10.0",
-    "tslint": "^5.20.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^8.0.1",
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.7.0",
-    "@babel/runtime": "^7.6.3",
-    "@types/classnames": "^2.2.9",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.2",
-    "classnames": "^2.2.6",
-    "core-js": "^3.3.3",
-    "identity-obj-proxy": "^3.0.0",
-    "jest-environment-jsdom-fourteen": "^1.0.1",
-    "jest-watch-typeahead": "^0.4.2",
-    "react": "^16.11.0",
-    "react-app-polyfill": "^1.0.5",
-    "react-dom": "^16.11.0"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
-    ],
-    "setupFiles": [
-      "react-app-polyfill/jsdom",
-      "<rootDir>/setup-react-adapter.ts"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jest-environment-jsdom-fourteen",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1",
-      "\\.(css|scss)$": "identity-obj-proxy"
-    },
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
-      }
-    },
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
-    ]
+    "debug": "^4.1.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-onerror": "^4.1.0",
+    "koa-router": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "pm2": "^4.4.0"
   }
 }
