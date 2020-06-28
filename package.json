@@ -1,7 +1,7 @@
 {
-  "name": "rollup-koa2",
+  "name": "koa2-typescript",
   "version": "1.0.0",
-  "description": "",
+  "description": "koa2 + typescript 开发环境",
   "main": "dist/app.js",
   "scripts": {
     "compile": "npx tsc --project tsconfig.json -w",
@@ -10,8 +10,12 @@
     "prd": "npx pm2 start bin/www",
     "eslint": "npx eslint src --ext .ts"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "koa2",
+    "typescript"
+  ],
+  "author": "localsummer",
+  "homepage": "https://github.com/localSummer/rollup-pro/tree/koa-tools",
   "license": "ISC",
   "devDependencies": {
     "@types/koa": "^2.11.3",
@@ -26,6 +30,7 @@
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "mddir": "^1.1.1",
     "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
     "typescript": "^3.6.4"

@@ -9,6 +9,36 @@
 },
 ```
 
+#### 目录结构
+```
+|-- koa2-typescript
+    |-- .eslintignore
+    |-- .eslintrc.js
+    |-- .gitignore
+    |-- prettier.config.js
+    |-- README.md
+    |-- package-lock.json
+    |-- package.json
+    |-- tsconfig.json
+    |-- .vscode
+    |   |-- settings.json
+    |-- bin
+    |   |-- www
+    |-- config
+    |   |-- constant.js
+    |-- dist 打包输入目录
+    |   |-- app.js
+    |   |-- routes
+    |       |-- index.js
+    |-- public 公共资源访问目录
+    |   |-- style.css
+    |-- src 源代码目录
+        |-- app.ts
+        |-- global.d.ts
+        |-- routes
+            |-- index.ts
+```
+
 #### app.ts
 
 ```javascript
